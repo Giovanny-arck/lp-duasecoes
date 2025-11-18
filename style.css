@@ -1,0 +1,573 @@
+/* ======================= */
+/* IMPORT & VARIABLES    */
+/* ======================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #25d366; /* Verde WhatsApp */
+    --dark-green: #071F3A;     /* Azul/Verde Escuro (Cor principal) */
+    --text-color: #333;
+    --text-light: #f0f0f0;
+    --text-white: #FFFFFF;
+    --background-color: #FFFFFF;
+    --light-gray-bg: #F8F9FA;
+    --border-color: #071F3A;
+    --error-color: #D32F2F;
+    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ======================= */
+/* RESET & GLOBALS     */
+/* ======================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    /* ALTERAÇÃO: Reduzido de 1500px para 1000px para "apertar" o layout e diminuir a dispersão */
+    max-width: 1500px; 
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: var(--dark-green);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+h1 { font-size: 1.75rem; /* Mobile */ }
+h2 { font-size: 1.5rem;  /* Mobile */ }
+h3 { font-size: 1.25rem; /* Mobile */ }
+
+p {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+a {
+    text-decoration: none
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Botão Padrão */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    width: 100%; /* Mobile First: botões ocupam 100% */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+/* Classe utilitária para acessibilidade */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ======================= */
+/* FIX ANCHOR SCROLLING  */
+/* ======================= */
+
+/* APLICA A MARGEM DE ROLAGEM A TODOS OS ELEMENTOS DE DESTINO */
+#hero, #contact-form {
+    scroll-margin-top: 80px; 
+}
+
+/* ======================= */
+/* HEADER          */
+/* ======================= */
+.main-header {
+    padding: 1.5rem 0;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.main-header .logo {
+    width: 250px;
+    margin: 0 auto; /* Mobile: Centralizado */
+    margin-top: -20px;
+}
+
+/* ======================= */
+/* HERO SECTION      */
+/* ======================= */
+.hero-section {
+    background-color: #071F3A; /* Fallback */
+    color: var(--text-white);
+    /* ALTERAÇÃO: Padding reduzido de 120px para 100px no topo e 50px na base */
+    padding: 100px 0 50px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Overlay escuro */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* Mobile: Empilhado */
+    /* ALTERAÇÃO: Gap reduzido de 2.5rem para 1.5rem para aproximar texto e form */
+    gap: 1.5rem;
+
+}
+
+.hero-content {
+    text-align: center; /* Mobile: Centralizado */
+}
+
+.hero-content h1 {
+    color: var(--text-white);
+    /* ALTERAÇÃO: Fonte aumentada ligeiramente para impacto */
+    font-size: 1.6rem; 
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.hero-form-wrapper {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 2rem;
+    /* ALTERAÇÃO: Largura máxima reduzida de 500px para 450px */
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza o formulário no mobile */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Formulário da Hero */
+.contact-form p {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--dark-green);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form input,
+.contact-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+    outline: none;
+}
+
+.contact-form select {
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg%20width%3D'12'%20height%3D'8'%20viewBox%3D'0%200%2012%208'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M1.41%200.589966L6%205.16997L10.59%200.589966L12%201.99997L6%207.99997L0%201.99997L1.41%200.589966Z'%20fill%3D'%23333'%2F%3E%3C/svg%3E") no-repeat right 14px center;
+}
+
+.contact-form select:invalid {
+    color: #666;
+}
+
+.contact-form small {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Status do Formulário */
+#form-status {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+#form-status.success { color: var(--dark-green); }
+#form-status.error { color: var(--error-color); }
+
+/* Estilos para intl-tel-input */
+.contact-form .iti {
+    width: 100%;
+}
+.contact-form #telefone.iti__tel-input {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* ======================= */
+/* SIMULATOR SECTION   */
+/* ======================= */
+.simulator-section {
+    padding: 60px 0;
+    background-color: var(--light-gray-bg);
+}
+
+.simulator-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+
+.simulator-container {
+    display: flex;
+    flex-direction: column; /* Mobile: Empilhado */
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.simulator-inputs, .simulator-results {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem; /* Menor padding no mobile */
+    flex: 1;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.simulator-inputs h3, .simulator-results h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Card de Inputs */
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.input-group {
+    flex: 1;
+}
+.input-group.full-width {
+    flex-basis: 100%;
+}
+.input-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.input-with-prefix {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Para o border-radius funcionar */
+}
+.input-with-prefix span {
+    padding: 10px 12px;
+    background-color: var(--light-gray-bg);
+    font-weight: 600;
+}
+.input-with-prefix input {
+    border: none;
+    padding: 10px 12px;
+    width: 100%;
+    font-size: 1rem;
+    font-family: var(--font-family);
+}
+.input-with-prefix input:focus {
+    outline: none;
+}
+
+/* Botões de Modalidade e Tempo */
+.forma-options-group, .tempo-options-group {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.forma-btn, .tempo-btn {
+    flex: 1;
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.85rem; /* Menor no mobile */
+    font-family: inherit;
+}
+.forma-btn + .forma-btn, .tempo-btn + .tempo-btn {
+    border-left: 1px solid var(--border-color);
+}
+.forma-btn.selected, .tempo-btn.selected {
+    background-color: var(--dark-green);
+    color: white;
+}
+
+.simulator-inputs p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+/* Card de Resultados */
+.simulator-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.result-block {
+    background-color: var(--dark-green);
+    color: var(--text-white);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+.result-block p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+.result-block strong {
+    font-size: 2.2rem; /* Menor no mobile */
+    display: block;
+}
+
+/* Disclaimer */
+.simulator-disclaimer {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    max-width: 800px;
+    margin: 2.5rem auto 0 auto;
+    line-height: 1.5;
+}
+
+/* NOVO: Estilo para o container do botão da calculadora */
+.simulator-cta { 
+    text-align: center; 
+    margin-top: 2rem; 
+    /* Garante que o botão não se "quebre" em mobile */
+    max-width: 100%;
+}
+
+/* ======================= */
+/* FOOTER          */
+/* ======================= */
+.main-footer {
+    background-color: var(--dark-green);
+    color: var(--text-light);
+    padding: 2.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ======================= */
+/* BOTÕES ESPECÍFICOS (Mobile/Desktop) */
+/* ======================= */
+
+/* Configuração Padrão (Mobile First) */
+.desktop-only {
+    display: none; /* Esconde botão de desktop em telas pequenas */
+}
+
+.mobile-only {
+    display: inline-block; /* Mostra botão de mobile em telas pequenas */
+    width: 90%; /* Ocupa 90% para dar um respiro lateral no mobile */
+    max-width: 350px; /* Limita a largura do botão em mobile */
+}
+
+/* ======================= */
+/* MEDIA QUERIES       */
+/* ======================= */
+
+/* --- TABLET (>= 768px) --- */
+@media (min-width: 768px) {
+    /* ALTERAÇÃO: Título maior no tablet */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.4rem; }
+
+    .btn {
+        width: auto; /* Botões não ocupam 100% */
+    }
+
+    /* Oculta botão mobile e mostra desktop */
+    .desktop-only {
+        display: inline-block;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    .main-header .logo {
+        margin: 0; /* Alinha à esquerda */
+        width: 300px;
+    }
+
+    .hero-section {
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .hero-container {
+        flex-direction: row; /* Lado a Lado */
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem; /* Ajuste fino do gap */
+    }
+
+    .hero-content {
+        text-align: left; /* Alinha texto à esquerda */
+        flex: 1;
+        /* ALTERAÇÃO: Aumentado para 58% para dar mais peso ao texto */
+        max-width: 58%;
+    }
+
+    .hero-form-wrapper {
+        flex: 1;
+        /* ALTERAÇÃO: Fixado em 40% para equilibrar */
+        max-width: 40%;
+        margin: 0;
+    }
+
+    .contact-form .btn {
+        width: 100%; /* Botão do form sempre 100% */
+    }
+
+    /* Calculadora */
+    .simulator-section {
+        padding: 80px 0;
+    }
+    
+    .simulator-inputs, .simulator-results {
+        padding: 1rem;
+    }
+    
+    .simulator-container {
+        flex-direction: row; /* Lado a Lado */
+        align-items: stretch;
+    }
+    
+    .form-inputs {
+        flex-direction: row;
+    }
+    
+    .forma-btn, .tempo-btn {
+        font-size: 0.9rem;
+    }
+    
+    .result-block strong {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- DESKTOP (>= 1024px) --- */
+@media (min-width: 1024px) {
+    /* ALTERAÇÃO: Fonte H1 aumentada para Desktop */
+    h1 { font-size: 2rem; }
+
+    /* Manter seus ajustes de logo */
+    .main-header .logo {
+        width: 350px;
+        margin-top: -20px;
+        margin-left: -70px;
+    }
+    
+    /* ALTERAÇÃO: Padding do Hero aumentado para Desktop */
+    .hero-section {
+        padding-top: 130px;
+        padding-bottom: 90px;
+    }
+
+    .hero-content {
+        /* ALTERAÇÃO: Ajustado para 55% para não ficar muito largo */
+        max-width: 55%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero-form-wrapper {
+        /* ALTERAÇÃO: Formulário levemente mais estreito e focado no desktop */
+        max-width: 420px;
+    }
+
+    /* Removi a redefinição do .container para 1200px aqui para manter o layout "apertado" de 1000px definido no global,
+       mas se preferir mais largo, pode descomentar a linha abaixo: */
+    /* .container { max-width: 1200px; } */
+}

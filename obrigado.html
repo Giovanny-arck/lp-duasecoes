@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muito Obrigado!</title>
+    <link rel="shortcut icon" href="/img/favicon-ari.webp" type="image/x-icon">
+    <style>
+        /* --- Configurações Gerais --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Container (invisível, para layout) --- */
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            box-sizing: border-box;
+            flex-grow: 1; 
+        }
+
+        /* -------------------------------------------
+        --- BASE (Mobile < 768px) ---
+        ------------------------------------------- */
+        
+        body {
+            /* Espaçamento melhorado para celulares */
+            padding: 10px 20px 0; 
+        }
+
+        /* --- 1. Logo --- */
+        .logo {
+            /* CORREÇÃO: max-width: 100% garante que a logo nunca saia do container */
+            max-width: 100%; 
+            height: auto;
+            margin-bottom: 25px;
+            border-radius: 10px;
+        }
+
+        /* --- 3. Frase "Muito Obrigado!" --- */
+        h1 {
+            font-size: 2.2em; /* Tamanho para mobile */
+            color: #2c3e50;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        /* --- 4. Frase "Conheça um pouco mais..." --- */
+        .sub-heading {
+            font-size: 1.1em; /* Tamanho para mobile */
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        /* --- 5. Vídeo --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            margin-bottom: 30px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* --- 6 & 7. Textos de Contato --- */
+        .contact-text,
+        .contact-text-secondary {
+            font-size: 1em; /* Tamanho para mobile */
+            line-height: 1.5;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        .contact-text-secondary {
+            margin-bottom: 25px;
+        }
+
+        /* --- 8. Botão WhatsApp --- */
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 12px 24px; /* Tamanho para mobile */
+            font-size: 1em; /* Tamanho para mobile */
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 20px; 
+            margin-top: 30px;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* --- Footer --- */
+        footer {
+            width: 100%;
+            padding: 25px 15px; /* Tamanho para mobile */
+            margin-top: 30px; /* Tamanho para mobile */
+            border-top: 1px solid #dde3e0;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            color: #888;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        /* -------------------------------------------
+        --- MEDIA QUERY (Tablets >= 768px) ---
+        ------------------------------------------- */
+        @media (min-width: 768px) {
+            body {
+                padding: 10px 20px 0; /* Aumenta padding do topo */
+            }
+
+            h1 {
+                font-size: 2.5em; /* Aumenta fonte */
+            }
+
+            .sub-heading {
+                font-size: 1.15em;
+            }
+
+            .contact-text,
+            .contact-text-secondary {
+                font-size: 1.05em;
+            }
+
+            .whatsapp-button {
+                padding: 14px 28px;
+                font-size: 1.1em;
+            }
+
+            footer {
+                margin-top: 40px;
+                padding: 30px 20px;
+            }
+        }
+        
+        /* -------------------------------------------
+        --- MEDIA QUERY (Notebooks/Desktops >= 1025px) ---
+        ------------------------------------------- */
+        @media (min-width: 1025px) {
+            h1 {
+                font-size: 2.8em; /* Fontes maiores para desktop */
+            }
+
+            .sub-heading {
+                font-size: 1.2em;
+            }
+
+            .contact-text {
+                font-size: 1.1em;
+            }
+        }
+        
+    </style>
+    
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1474967327139693');
+fbq('track', 'PageView');
+</script>
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1474967327139693&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    <div class="container">
+
+        <img src="/img/capa simulador atual.png" alt="Logo da Empresa" class="logo">
+
+        <h1>Muito Obrigado!</h1>
+
+        <p class="sub-heading">Conheça um pouco mais sobre o ARI-Ativo de Renda Imobiliária</p>
+
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/g0AaY44D8T0?autoplay=1&controls=1&loop=1&playlist=g0AaY44D8T0&rel=0&showinfo=0"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <p class="contact-text">
+            Fique atento ao seu celular, pois em breve nosso time entrará em contato com você!
+        </p>
+
+        <p class="contact-text-secondary">
+            Se preferir falar com nosso time comercial agora, é só clicar no botão abaixo
+        </p>
+
+        <a href="https://wa.me/5547992236311" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+            Falar com time comercial
+        </a>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>
+                © <span id="current-year">2025</span>
+                ARCK1PRO. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+
+
+
+
+

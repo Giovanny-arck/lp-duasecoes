@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARI - Ativo de Renda Imobiliária</title>
+    <meta name="description" content="Simule seu investimento no ARI e conquiste retornos de até 3% ao mês, livre de imposto de renda, no litoral de Santa Catarina.">
+
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.2.16/css/intlTelInput.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <link rel="icon" href="/img/favicon-ari.webp" type="image/webp">
+    <link rel="canonical" href="https://seusite.com.br/"> <link rel="stylesheet" href="style.css">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.2.16/css/intlTelInput.css"></noscript>
+
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '689878610742519');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=689878610742519&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <img src="/img/logo-ajustada-lp.webp" alt="ARI - Ativo de Renda Imobiliária" class="logo">
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Conquiste retornos de até 3% ao mês livre de imposto de renda, com o ARI - Ativo de Renda Imobiliária no litoral de Santa Catarina.</h1>
+                    <p>O Ativo de Renda Imobiliária (ARI) representam uma oportunidade sólida para quem busca multiplicar o patrimônio ou conquistar rendimentos mensais consistentes.</p>
+                    <p>O Litoral de Santa Catarina, uma das regiões mais valorizadas e promissoras do país, oferece o cenário ideal para investimentos seguros e altamente rentáveis.</p>
+                </div>
+                <div class="hero-form-wrapper">
+                    <form id="contact-form" class="contact-form" novalidate>
+                        <p>Cadastre-se e receba as oportunidades.</p>
+                        
+                        <div class="form-group">
+                            <label for="nome" class="visually-hidden">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="visually-hidden">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="E-mail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone" class="visually-hidden">Telefone</label>
+                            <input type="tel" id="telefone" name="whatsapp" placeholder="Telefone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profissao" class="visually-hidden">Profissão</label>
+                            <input type="text" id="profissao" name="profissao" placeholder="Profissão" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="faixa-valor" class="visually-hidden">Faixa de Valor de Investimento</label>
+                            <select id="faixa-valor" name="valor_investimento" required>
+                                <option value="" disabled selected>Faixa de Valor de Investimento</option>
+                                <option value="50k-99k">R$ 50.000 a R$ 99 mil</option>
+                                <option value="100k-199k">R$ 100.000 a R$ 199 mil</option>
+                                <option value="200k-399k">R$ 200.000 a R$ 399 mil</option>
+                                <option value="400k+">Acima de R$ 400.000</option>
+                            </select>
+                        </div>
+                        
+                        <small>Ao preencher este formulário, autorizo que meus dados sejam utilizados para que a empresa entre em contato comigo por e-mail, telefone ou outros meios informados.</small>
+                        <button type="submit" class="btn btn-primary">QUERO ME REGISTRAR</button>
+                        <div id="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulator" class="simulator-section">
+            <div class="container">
+                <div class="simulator-header">
+                    <h2>Calculadora de Investimentos</h2>
+                    <p>Simule quanto seu dinheiro valoriza com o ARI - Ativo de Renda Imobiliária.</p>
+                </div>
+                
+                <div class="simulator-container">
+                    <div class="simulator-inputs">
+                        <h3>Dados de Investimento</h3>
+                        <form id="calculator-form">
+                            <div class="form-inputs"> <div class="input-group">
+                                    <label for="valor-aplicado">VALOR APLICADO</label>
+                                    <div class="input-with-prefix">
+                                        <span>R$</span>
+                                        <input type="text" id="valor-aplicado" placeholder="50.000" inputmode="numeric">
+                                    </div>
+                                    <div id="valor-error" class="error-message">O valor mínimo é R$ 50.000</div>
+                                </div>
+                                <div class="input-group">
+                                    <label>MODALIDADE</label>
+                                    <div id="forma-options" class="forma-options-group">
+                                        <button type="button" class="forma-btn selected" data-forma="final">Rendimento no Final</button>
+                                        <button type="button" class="forma-btn" data-forma="mensal">Rendimento Mensal</button>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="input-group full-width">
+                                <label>PRAZO DO INVESTIMENTO</label>
+                                <p>Selecione o seu prazo de investimento*</p>
+                                <div id="tempo-options" class="tempo-options-group">
+                                    <button type="button" class="tempo-btn" data-meses="18">18 Meses</button>
+                                    <button type="button" class="tempo-btn" data-meses="24">24 Meses</button>
+                                    <button type="button" class="tempo-btn" data-meses="36">36 Meses</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="simulator-results">
+                        <h3>Projeção de Retorno</h3>
+                        
+                        <div class="result-block" id="result-block-mensal" style="display: none;"> <p id="result-label-mensal">Rendimento mensal:</p>
+                            <strong id="result-value-mensal">R$ 0,00</strong>
+                        </div>
+                        
+                        <div class="result-block" id="result-block-juros-total" style="display: none;"> <p id="result-label-juros-total">Valor total no período:</p> <strong id="result-value-juros-total">R$ 0,00</strong>
+                        </div>
+
+                        <div class="result-block" id="result-block-total-final"> <p id="result-label-total-final">Valor total ao final (Valor Aplicado + Juros):</p>
+                            <strong id="result-value-total-final">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="simulator-disclaimer">
+                    Esta simulação é apenas uma estimativa para ajudar no seu planejamento. Os valores podem variar conforme o valor aplicado, a modalidade e o prazo. As informações preenchidas são de responsabilidade do usuário.
+            </p>
+            <div class="simulator-cta">
+                <a href="#hero" class="btn btn-primary desktop-only">QUERO INICIAR OS INVESTIMENTOS</a>
+                
+                <a href="#contact-form" class="btn btn-primary mobile-only">QUERO INICIAR OS INVESTIMENTOS</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 ARI - Ativo de Renda Imobiliária. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/19.2.16/js/intlTelInput.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
