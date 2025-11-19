@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- URLs DOS WEBHOOKS ---
-    const WEBHOOK_URL_1 = 'https://n8nwebhook.arck1pro.shop/webhook/teste';
-    const WEBHOOK_URL_2 = '';
+    const WEBHOOK_URL_1 = 'https://n8nwebhook.arck1pro.shop/webhook/lp-lead-direto';
+    const WEBHOOK_URL_2 = 'https://n8nwebhook.arck1pro.shop/webhook/lp-lead-direto-rdmkt';
 
     // --- INICIALIZAÇÃO DO CAMPO DE TELEFONE INTERNACIONAL ---
     const phoneInput = document.getElementById('telefone');
