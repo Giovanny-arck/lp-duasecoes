@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (phoneInput) {
         // Atrasar a inicialização do intl-tel-input para não bloquear o 'load'
-        // Isso melhora a métrica 'Largest Contentful Paint'
         setTimeout(() => {
             if (window.intlTelInput) {
                 iti = window.intlTelInput(phoneInput, {
@@ -47,30 +46,77 @@ document.addEventListener('DOMContentLoaded', () => {
         return utm;
     }
 
-    // --- FUNÇÃO DE SUBMISSÃO CORRIGIDA E ROBUSTA ---
+    // --- FUNÇÃO DE VALIDAÇÃO DE EMAIL (Simples) ---
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    // --- FUNÇÃO DE SUBMISSÃO CORRIGIDA E COM VALIDAÇÃO TOTAL ---
     async function handleFormSubmit(event) {
         event.preventDefault();
         const formStatus = document.getElementById('form-status');
         const submitButton = contactForm.querySelector('button[type="submit"]');
+        
+        // Reseta estado
         submitButton.disabled = true;
         submitButton.textContent = 'ENVIANDO...';
         formStatus.textContent = '';
         formStatus.className = '';
 
-        // Validação do telefone
-        if (iti && !iti.isValidNumber()) {
-            formStatus.textContent = 'Por favor, insira um número de telefone válido.';
-            formStatus.className = 'error';
-            submitButton.disabled = false;
-            submitButton.textContent = 'QUERO ME REGISTRAR';
-            return;
-        }
-
+        // Captura os dados do formulário
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData.entries());
         const formattedPhone = iti ? iti.getNumber() : data.whatsapp;
 
+        // --- BLOCO DE VALIDAÇÕES OBRIGATÓRIAS ---
+
+        // 1. Validação de Nome
+        if (!data.nome || data.nome.trim() === "") {
+            showError('Por favor, preencha seu Nome Completo.');
+            return;
+        }
+
+        // 2. Validação de E-mail (Preenchimento e Formato)
+        if (!data.email || data.email.trim() === "") {
+            showError('Por favor, preencha seu E-mail.');
+            return;
+        }
+        if (!isValidEmail(data.email)) {
+            showError('Por favor, insira um E-mail válido.');
+            return;
+        }
+
+        // 3. Validação do Telefone
+        if (iti && !iti.isValidNumber()) {
+            showError('Por favor, insira um número de telefone válido.');
+            return;
+        }
+
+        // 4. Validação da Profissão
+        if (!data.profissao || data.profissao.trim() === "") {
+            showError('Por favor, preencha sua Profissão.');
+            return;
+        }
+
+        // 5. Validação do Valor de Investimento
+        if (!data.valor_investimento || data.valor_investimento === "") {
+            showError('Por favor, selecione uma faixa de valor de investimento.');
+            return;
+        }
+
+        // Função auxiliar para mostrar erro e reativar botão
+        function showError(msg) {
+            formStatus.textContent = msg;
+            formStatus.className = 'error';
+            submitButton.disabled = false;
+            submitButton.textContent = 'QUERO ME REGISTRAR';
+        }
+
+        // --- MONTAGEM E ENVIO DO PAYLOAD ---
+
         // Monta o payload com as UTMs na raiz do objeto
+        // Garante que o nome do campo é 'valor_investimento' conforme o atributo name do HTML
         const payload = {
             ...data,
             whatsapp: formattedPhone,
@@ -89,10 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response1 = await fetch(WEBHOOK_URL_1, requestOptions);
 
             if (response1.status === 409) {
-                formStatus.textContent = 'Você já tem um cadastro conosco.';
-                formStatus.className = 'error';
-                submitButton.disabled = false;
-                submitButton.textContent = 'QUERO ME REGISTRAR';
+                showError('Você já tem um cadastro conosco.');
                 return;
             }
 
@@ -131,15 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('ERRO FATAL:', error);
-            formStatus.textContent = 'Erro ao processar cadastro. Tente novamente.';
-            formStatus.className = 'error';
-            submitButton.disabled = false;
-            submitButton.textContent = 'QUERO ME REGISTRAR';
+            showError('Erro ao processar cadastro. Tente novamente.');
         }
     }
 
     // --- LÓGICA DA CALCULADORA ---
-    // (Este bloco é IDÊNTICO ao seu arquivo original)
     const valorInput = document.getElementById('valor-aplicado');
     const tempoBtns = document.querySelectorAll('.tempo-btn');
     const formaBtns = document.querySelectorAll('.forma-btn');
@@ -153,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalFinalResultBlock = document.getElementById('result-block-total-final');
     const totalFinalResultValue = document.getElementById('result-value-total-final');
     
-    // As notas de rodapé não existem no novo HTML, então verificamos se existem
+    // Verifica elementos opcionais de nota
     const noteFinal = document.getElementById('results-note-final');
     const noteMensal = document.getElementById('results-note-mensal');
 
@@ -184,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calcularSimulacao() {
-        if (!valorInput) return; // Proteção caso o elemento não exista
+        if (!valorInput) return; 
         
         const valorStr = valorInput.value.replace(/\./g, '').replace(',', '.');
         const valor = parseFloat(valorStr) || 0;
@@ -279,8 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- FIM DA LÓGICA DA CALCULADORA ---
-
     // Inicializa a visibilidade dos resultados da calculadora
     updateResultVisibility();
 });
