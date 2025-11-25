@@ -163,9 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     phone: formattedPhone || '',
                     utm_source: payload.utm_source || ''
                 });
-                
-                const eventId = 'evt_' + Date.now() + '_' + Math.floor(Math.random() * 1000000);
-                fbq('track', 'CompleteRegistration', {}, { eventID: eventId });
             }
 
             setTimeout(() => {
