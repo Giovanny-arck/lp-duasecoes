@@ -156,17 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Disparo do Pixel (se o fbq existir)
             if (typeof fbq === 'function') {
-                fbq('track', 'Lead', {
-                    content_name: 'Cadastro lp duas seções',
-                    name: data.nome || '',
-                    email: data.email || '',
-                    phone: formattedPhone || '',
-                    utm_source: payload.utm_source || ''
-                });
-
+                // Evento Lead removido. Mantendo apenas CompleteRegistration.
                 const eventId = 'evt_' + Date.now() + '_' + Math.floor(Math.random() * 1000000);
                 fbq('track', 'CompleteRegistration', {}, { eventID: eventId });
-                
             }
 
             setTimeout(() => {
